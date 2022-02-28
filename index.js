@@ -107,7 +107,7 @@ let createList = () => {
 
   const checkbox = document.createElement("input"); // we create an input tag for complete
   // checkbox.classList.add("checklist"); // we create class to the input tag
-  checkbox.id = "checklist"; // we create id to the input tag. Note: different format
+  checkbox.id = "completeBtn"; // we create id to the input tag. Note: different format
   checkbox.value = "Complete";
   // checkbox.style.backgroundColor = "#34c759";
   // checkbox.style.color = "white";
@@ -171,7 +171,7 @@ let createList = () => {
 
   // span is to represent a remove icon
   const remove = document.createElement("button");
-  remove.classList.add("remove"); // classname called remove
+  remove.id = "deleteBtn"; // classname called remove
   //   remove.innnerHTML = "&cross;"; //
   remove.innerText = "Delete";
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>question: can I create a cross?
@@ -197,7 +197,8 @@ let createList = () => {
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Question: How to check the value of addDescription?
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Question: Why is the
   // addDate.reset = "";
-  li.style.display = flex;
+  // li.style.display = flex;
+  li.classList.add("toDoList");
 };
 // add "checked symbol when click on a list item"
 // the button needs to be called when we press button or enter on input field
