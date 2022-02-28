@@ -106,27 +106,67 @@ let createList = () => {
   const li = document.createElement("li"); //5 : create li element
 
   const checkbox = document.createElement("input"); // we create an input tag for complete
-  checkbox.classList.add("checklist"); // we create class to the input tag
+  // checkbox.classList.add("checklist"); // we create class to the input tag
+  checkbox.id = "checklist"; // we create id to the input tag. Note: different format
   checkbox.value = "Complete";
-  checkbox.style.backgroundColor = "#34c759";
-  checkbox.style.color = "white";
+  // checkbox.style.backgroundColor = "#34c759";
+  // checkbox.style.color = "white";
   checkbox.type = "button"; // we added a button
+  checkbox.addEventListener("click", function () {
+    // Below is output: it will change//
+    // paragraph.style.textDecoration = "line-through";
+    // spanDate.style.textDecoration = "line-through";
+    // paragraph.style.backgroundColor = "red";
+    // spanDate.style.backgroundColor = "red";
+
+    paragraph.classList.toggle("checkTwo"); // Note: to use classList and not ClassList
+    spanDate.classList.toggle("checkTwo");
+    // this.parentElement.ClassList.toggle("checkTwo");
+    // console.log("Toggle");
+  });
+  // list.addEventListener(
+  //   "click",
+  //   function (e) {
+  //     if (e.target.tagName === "LI") {
+  //       // cannot be LI all the box is strikeout
+  //       e.target.classList.toggle("checklistTwo");
+  //       // e.target.classList.toggle("spanDate");
+  //       // e.target.classList.toggle("paragraph");
+  //     }
+  //   },
+  //   false
+  // );
 
   if (addDescription == "" || addDate == "") {
     alert("Please fill out task");
+  } else {
+    console.log;
   }
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> question: I tried to do alert but it does not work?
 
   const paragraph = document.createElement("p"); // create paragraph for the button
-  paragraph.classList.add("paragraph");
-  paragraph.textContent = addDescription; // use textContent to set the input field of the text
+  // paragraph.classList.add("paragraph");
+  paragraph.id = "paragraph";
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> classList or className also provides class attribute. But classList can access teh CSS.
+  (paragraph.textContent = addDescription), addDate; // use textContent to set the input field of the text
+
+  // ================= attempt 1 : strikethrough ===== //
+  // paragraph.addEventListener("click", function () {
+  //   paragraph.style.textDecoration = "line-through";
+  // });
+  // Output: it works
+
+  //===== Attemp 2: strikethough ======= //
+  // paragraph.addEventListener("click", function () {
+  //   const result = classes.toggle("");
+  // });
 
   //   const paragraphDate = document.createElement("p"); // create paragraph for the button
   //   paragraph.classList.add("paragraphDate");
   //   paragraph.textContent = addDate;
 
   const spanDate = document.createElement("span");
-  spanDate.classList.add("spanDate");
+  spanDate.id = "spanDate";
   spanDate.textContent = addDate;
 
   // span is to represent a remove icon
@@ -134,11 +174,11 @@ let createList = () => {
   remove.classList.add("remove"); // classname called remove
   //   remove.innnerHTML = "&cross;"; //
   remove.innerText = "Delete";
-  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>question: can I create a
+  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>question: can I create a cross?
   remove.style.backgroundColor = "#ff3b30";
   remove.style.color = "white";
   remove.addEventListener("click", function () {
-    remove(li);
+    this.parentElement.remove();
   }); // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> question: I tried to add the remove function but it doesnt work? Is event.target just synta ?
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>question: Is it possible to carry out do css for DOM?
   // we append all the elements to the li elements
@@ -149,7 +189,15 @@ let createList = () => {
   li.appendChild(remove);
   list.appendChild(li);
 
-  //   inputText = "";
+  // paragraph.style.width = ;
+  document.querySelector("#myItems").value = "";
+  document.querySelector("#myDates").value = "";
+  addDescription = ""; // Note: this is to let the box be empty
+  console.log(addDescription);
+  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Question: How to check the value of addDescription?
+  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Question: Why is the
+  // addDate.reset = "";
+  li.style.display = flex;
 };
 // add "checked symbol when click on a list item"
 // the button needs to be called when we press button or enter on input field
@@ -160,6 +208,14 @@ let createList = () => {
 
 addButton.addEventListener("click", createList); //addEventListener method:{object.addEventListener(event Listener, name of funtion)}
 
+let removeAllBtn = document.getElementById("removeAllBtn");
+removeAllBtn.addEventListener("click", function () {
+  // li.remove();
+  list.remove();
+  // addDescription.remove();
+});
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Question: why I can remove all the list? even though I should not have access?
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Question: why when I clear finsih and I need to try and save.
 //=========== Trying to create prompt ===========//
 // addButton.addEventListener("click", function (e) {
 //   if ((addDescription = "" || addDate == "")) {
